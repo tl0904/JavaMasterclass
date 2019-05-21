@@ -1,5 +1,7 @@
 package com.timbuchalka.section7.OOPChallenge;
 
+import java.util.List;
+
 /**
  *
  * @author tl0904
@@ -32,6 +34,10 @@ public class Hamburger {
 
     public Items getItems() {
         return items;
+    }
+    
+    public void show(List<String> list) {
+        System.out.println("You've choosen: Hamburger");
     }
     
 }

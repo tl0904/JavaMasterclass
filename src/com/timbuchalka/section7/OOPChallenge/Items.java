@@ -1,109 +1,33 @@
 package com.timbuchalka.section7.OOPChallenge;
 
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 /**
  *
  * @author tl0904
  */
 public class Items {
 
-    private int lettuce;
-    private int tomato;
-    private int carrot;
-    private int chees;
-    private int onion;
-    private int cucumber;
-    private int cheaps;
-    private int drink;
-    private String lettuceName;
-    private String tomatoName;
-    private String carrotName;
-    private String cheesName;
-    private String onionName;
-    private String cucumberName;
-    private String cheapsName;
-    private String drinkName;
+    private Map<String, Integer> items;
     
     public Items() {
-        this.lettuce = 40;
-        this.tomato = 60;
-        this.carrot = 50;
-        this.chees = 90;
-        this.onion = 30;
-        this.cucumber = 40;
-        this.cheaps = 50;
-        this.drink = 100;
-        this.lettuceName = "lettuce";
-        this.tomatoName = "tomato";
-        this.carrotName = "carrot";
-        this.cheesName = "chees";
-        this.onionName = "onion";
-        this.cucumberName = "cucumber";
-        this.cheapsName = "cheaps";
-        this.drinkName = "drink";
+        
+        this.items = Stream.of(new Object[][] { 
+            { "lettuce", 40 }, 
+            { "tomato", 60 }, 
+            { "carrot", 50 },
+            { "chees", 90 },
+            { "onion", 30 },
+            { "cucumber", 40 },
+            { "cheaps", 50 },
+            { "drink", 100 },
+        }).collect(Collectors.toMap(data -> (String) data[0], data -> (Integer) data[1]));
     }
 
-    public int getLettuce() {
-        return lettuce;
+    public Map<String, Integer> getItems() {
+        return items;
     }
 
-    public int getTomato() {
-        return tomato;
-    }
-
-    public int getCarrot() {
-        return carrot;
-    }
-
-    public int getChees() {
-        return chees;
-    }
-
-    public int getOnion() {
-        return onion;
-    }
-
-    public int getCucumber() {
-        return cucumber;
-    }
-
-    public int getCheaps() {
-        return cheaps;
-    }
-
-    public int getDrink() {
-        return drink;
-    }
-
-    public String getLettuceName() {
-        return lettuceName;
-    }
-
-    public String getTomatoName() {
-        return tomatoName;
-    }
-
-    public String getCarrotName() {
-        return carrotName;
-    }
-
-    public String getCheesName() {
-        return cheesName;
-    }
-
-    public String getOnionName() {
-        return onionName;
-    }
-
-    public String getCucumberName() {
-        return cucumberName;
-    }
-
-    public String getCheapsName() {
-        return cheapsName;
-    }
-
-    public String getDrinkName() {
-        return drinkName;
-    }
-    
 }
