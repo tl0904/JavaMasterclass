@@ -29,5 +29,9 @@ public class Items {
     public Map<String, Integer> getItems() {
         return items;
     }
+    
+    public int getValue(String key) {
+        return items.get(key);
+    }
 
 }

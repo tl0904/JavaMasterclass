@@ -25,23 +25,24 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         Hamburger hamburger;
-        List<String> list = new ArrayList<>();
+        List<String> list;
         int hambi = validateInput(sc);
 
-        System.out.println(hambi);
-        
         switch (hambi) {
             case 1:
                 hamburger = new Hamburger();
-                chooseItems(sc);
+                list = chooseItems(sc, 4, items);
+                hamburger.show(list);
                 break;
             case 2:
                 hamburger = new HealthyBurger();
-                chooseItems(sc);
+                list = chooseItems(sc, 6, items);
+                hamburger.show(list);
                 break;
             case 3:
                 hamburger = new DeluxeBurger();
-                chooseItems(sc);
+                list = chooseItems(sc, 4, items);
+                hamburger.show(list);
                 break;
         }
         
@@ -74,19 +75,23 @@ public class Main {
         return hambi;
     }
     
-    public static void chooseItems(Scanner sc) {
+    public static List<String> chooseItems(Scanner sc, int i, Map<Integer, String> items) {
         
         int number = 0;
         boolean isNumber;
+        List<String> list = new ArrayList<>();        
         do {
             System.out.println("Choose items from the list!");
             System.out.println("1 - lettuce, 2 - tomato, 3 - carrot, 4 - cheese, "
                     + "5 - onion, 6 - cucumber");
             if (sc.hasNextInt()) {
-                number = sc.nextInt();
-                while (number < 1 || number > 6) {
-                    System.out.println("Please choose between 1 and 6!");
+                for (int j = 0; j < i; j++) {
                     number = sc.nextInt();
+                    while (number < 1 || number > 6) {
+                        System.out.println("Please choose between 1 and 6!");
+                        number = sc.nextInt();
+                    }
+                    list.add(items.get(number));
                 }
                 isNumber = true;
             } else {
@@ -96,6 +101,8 @@ public class Main {
             }
         } while (!isNumber);
         sc.nextLine();
+        
+        return list;
 
     }
 
