@@ -12,10 +12,9 @@ import java.util.stream.Stream;
  * @author tl0904
  */
 public class Main {
-
-    public static void main(String[] args) {
-
-        Map<Integer, String> items = Stream.of(new Object[][]{
+    
+    private static Scanner sc = new Scanner(System.in);
+    private static Map<Integer, String> items = Stream.of(new Object[][]{
             {1, "lettuce"},
             {2, "tomato"},
             {3, "carrot"},
@@ -23,25 +22,26 @@ public class Main {
             {5, "onion"},
             {6, "cucumber"},}).collect(Collectors.toMap(data -> (Integer) data[0], data -> (String) data[1]));
 
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+
         Hamburger hamburger;
         List<String> list;
-        int hambi = validateInput(sc);
+        int hambi = validateInput();
 
         switch (hambi) {
             case 1:
                 hamburger = new Hamburger();
-                list = chooseItems(sc, 4, items);
+                list = chooseItems(4);
                 hamburger.show(list);
                 break;
             case 2:
                 hamburger = new HealthyBurger();
-                list = chooseItems(sc, 6, items);
+                list = chooseItems(6);
                 hamburger.show(list);
                 break;
             case 3:
                 hamburger = new DeluxeBurger();
-                list = chooseItems(sc, 4, items);
+                list = chooseItems(4);
                 hamburger.show(list);
                 break;
         }
@@ -50,7 +50,7 @@ public class Main {
 
     }
 
-    public static int validateInput(Scanner sc) {
+    public static int validateInput() {
 
         int hambi = 0;
         boolean isNumber;
@@ -75,7 +75,7 @@ public class Main {
         return hambi;
     }
     
-    public static List<String> chooseItems(Scanner sc, int i, Map<Integer, String> items) {
+    public static List<String> chooseItems(int i) {
         
         int number = 0;
         boolean isNumber;
